@@ -1,0 +1,33 @@
+FORMAT: 1A
+HOST: http://api.mock/
+
+# ブラウザ間API一覧
+
+#Group api/v1
+
+## ログイン [/api/v1/login]
+### /login [POST]
++ Parameters
+    + login(string) - ログインID
+    + password(string) - パスワード
+
++ Request (application/json)
+    {
+        "login": "takashi",
+        "password": "password"
+    }
+            
++ Response 200 (application/json)
+    {
+        user_info: {
+            first_name: "崇",
+            last_name: "小林",
+            role_code: "SA"
+        }
+    }
+        
+
+## ログアウト [/api/vi/logout]
+### /logout [POST]
+
++ Response 200 (application/json)
