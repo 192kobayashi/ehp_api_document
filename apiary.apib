@@ -3,29 +3,54 @@ HOST: http://api.mock/
 
 # ブラウザ間API一覧
 
-#Group api/v1
+#Group v1
 
 ## ログイン [/api/v1/login]
 ### /login [POST]
-+ Parameters
-    + login(string) - ログインID
-    + password(string) - パスワード
+
+* ユーザの認証を行う。
 
 + Request (application/json)
+    + Attributes
+        + login: takashi (string, required) - ログインID
+        + password: password (string, required) - パスワード
+    
     {
-        "login": "takashi",
-        "password": "password"
+        login: takashi,
+        password: password
     }
-            
+
 + Response 200 (application/json)
+
+    + Attributes
+        + user_info(object, required)
+            + first_name: 崇 (string, required) - 名前
+            + last_name: 小林(string, required) - 苗字
+            + role_code: SA (string, required) - 権限コード(SA:システム管理者, GU:一般ユーザ)
+
     {
         user_info: {
-            first_name: "崇",
-            last_name: "小林",
-            role_code: "SA"
+            first_name: 崇,
+            last_name: 小林,
+            role_code: SA
         }
     }
-        
+
++ Response 401 (application/json)
+    + Attributes
+        + error_list(array, required)
+            + (object)
+                + code:ehp(string, required) - エラーコード
+                + message: エラーメッセージ(string, required) - エラーメッセージ
+
+    {
+        error_list: [
+            {
+                code: ehp,
+                message: 認証に失敗しました。
+            }
+        ]
+    } 
 
 ## ログアウト [/api/vi/logout]
 ### /logout [POST]
