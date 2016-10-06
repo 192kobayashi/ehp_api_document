@@ -5,23 +5,188 @@ FORMAT: 1A
 #Group v1
 
 ## ログイン [/api/v1/login]
-### /login [POST]
+### /api/v1/login [POST]
 
 * ユーザの認証を行う。
 
 + Request (application/json)
 
         {
-            login: takashi,
-            password: password
+            "email": takashi,
+            "password": password
         }
 
 + Response 200 (application/json)
 
         {
-            user_info: {
-                first_name: 崇,
-                last_name: 小林,
-                role_code: SA
+            "user_info": {
+                "first_name": "崇",
+                "last_name": "小林",
+                "role_code": "SA"
             }
+        }
+
+
+## ログアウト [/api/v1/logout]
+### /api/v1/logout [POST]
+
+* ログアウトする。
+
++ Response 200 (application/json)
+
+        {
+        }
+
+## 機器 [/api/v1/equipments]
+### 機器一覧取得 [GET]
+
+* 機器の一覧を取得する。
+
++ Response 200 (application/json)
+
+        {
+            "equipments_list": [
+                {
+                    "id": 1,
+                    "name": "機器1",
+                    "status": 0,
+                    "ip_address": "192.168.104.1",
+                    "managed_equipment_name": "室外機1",
+                    "facility_name": "北海道1",
+                    "managed_equipment_status": 0
+                },
+                {
+                    "id": 2,
+                    "name": "機器1",
+                    "status": 1,
+                    "ip_address": "192.168.104.2",
+                    "managed_equipment_name": "室外機2",
+                    "facility_name": "北海道2",
+                    "managed_equipment_status": 1
+                }               
+            ]
+        }
+
+### 機器登録[POST]
+* 機器を登録する。
+
++ Request (application/json)
+
+        {
+            "ID": takashi,
+            "name": "機器1",
+            "managed_equipment_name": "室外機3",
+            "facility_name": "沖縄4"
+        }
+
++ Response 200 (application/json)
+
+        {
+        }
+
+
+## 機器 [/api/v1/equipments/{id}]
+### 機器編集[PUT]
+* 機器を編集する。
+
++ Request (application/json)
+
+        {
+            "ID": takashi,
+            "name": "機器1",
+            "managed_equipment_name": "室外機3",
+            "facility_name": "沖縄4"
+        }
+
++ Response 200 (application/json)
+
+        {
+        }
+
+### 機器削除[DELETE]
+* 機器を削除する。
+
++ Response 200 (application/json)
+
+        {
+        }
+
+
+## ユーザ [/api/v1/users]
+
+### ユーザ一覧取得 [GET]
+
+
++ Response 200 (application/json)
+
+        {
+            "users_list": [
+                {
+                    "id": 1,
+                    "last_name": "タカシ",
+                    "first_name": "小林,
+                    "email": "takashi@test.com"
+                },
+                {
+                    "id": 1,
+                    "last_name": "タカシ",
+                    "first_name": "小林,
+                    "email": "takashi1@test.com"
+                }               
+            ]
+        }
+
+### ユーザ登録[POST]
+
+
++ Request (application/json)
+
+        {
+            "ID": takashi,
+            "name": "機器1",
+            "managed_equipment_name": "室外機3",
+            "facility_name": "沖縄4"
+        }
+
++ Response 200 (application/json)
+
+        {
+        }
+
+
+## ユーザ [/api/v1/users/{id}]
+### ユーザ情報取得 [GET]
+
++ Response 200 (application/json)
+
+        {
+            "last_name": "takashi",
+            "first_name": "kobayashi",
+            "email": "test@test.com",
+            "role_code": "SA"
+        }
+
+
+
+### ユーザ編集[PUT]
+
++ Request (application/json)
+
+        {
+            "last_name": "takashi",
+            "first_name": "kobayashi",
+            "email": "test@test.com",
+            "role_code": "SA"
+        }
+
++ Response 200 (application/json)
+
+        {
+        }
+
+### ユーザ削除[DELETE]
+
++ Response 200 (application/json)
+
+        {
         }
