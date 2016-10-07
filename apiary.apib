@@ -115,15 +115,17 @@ FORMAT: 1A
             "users_list": [
                 {
                     "id": 1,
-                    "last_name": "タカシ",
-                    "first_name": "小林,
-                    "email": "takashi@test.com"
+                    "first_name": "タカシ",
+                    "last_name": "小林",
+                    "email": "takashi@test.com",
+                    "role_code": "SA"
                 },
                 {
-                    "id": 1,
-                    "last_name": "タカシ",
-                    "first_name": "小林,
-                    "email": "takashi1@test.com"
+                    "id": 2,
+                    "first_name": "みきすけ,
+                    "last_name": "玉城",
+                    "email": "takashi1@test.com",
+                    "role_code": "GU"
                 }               
             ]
         }
@@ -152,8 +154,8 @@ FORMAT: 1A
 + Response 200 (application/json)
 
         {
-            "last_name": "takashi",
-            "first_name": "kobayashi",
+            "first_name": "takashi",
+            "last_name": "kobayashi",
             "email": "test@test.com",
             "role_code": "SA"
         }
@@ -165,8 +167,8 @@ FORMAT: 1A
 + Request (application/json)
 
         {
-            "last_name": "takashi",
-            "first_name": "kobayashi",
+            "first_name": "hiroshi",
+            "last_name": "kobayashi",
             "email": "test@test.com",
             "role_code": "SA"
         }
